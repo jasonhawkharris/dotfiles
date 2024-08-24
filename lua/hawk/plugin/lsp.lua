@@ -94,5 +94,10 @@ cmp.setup({
     mapping = {
         -- `Enter` key to confirm completion
         ['<CR>'] = cmp.mapping.confirm({ select = false }),
-    }
+    },
+    sources = cmp.config.sources({
+        { name = "cody" },
+        { name = "nvim_lsp" }
+    })
+
 })

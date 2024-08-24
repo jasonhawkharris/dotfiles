@@ -27,6 +27,7 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 
 -- For Cody
 vim.keymap.set("n", "<leader>cc", cmd 'CodyToggle')
+vim.keymap.set("c", "<leader>ca", cmd 'CodyAsk')
 
 -- For exiting vim
 vim.keymap.set("n", "<C-[>", cmd 'q!')
@@ -44,17 +45,24 @@ vim.keymap.set('n', '<leader>sh', cmd 'Telescope help_tags')
 vim.keymap.set('n', '<leader>sw', cmd 'Telescope grep_string')
 vim.keymap.set('n', '<leader>sg', cmd 'Telescope live_grep')
 vim.keymap.set('n', '<leader>sd', cmd 'Telescope diagnostics')
+vim.keymap.set('n', '<leader>gs', require("telescope").extensions.live_grep_args.live_grep_args, { noremap = true })
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float)
 
--- undotree
+-- Undotree
 vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle)
 
--- Harpoon
+--- Harpoon
 local harpoon = require('harpoon')
-vim.keymap.set("n", "<leader>mm", function() harpoon:list():append() end)
+vim.keymap.set("n", "<leader>mm", function() harpoon:list():add() end)
 vim.keymap.set("n", "<leader>vv", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
 
 vim.keymap.set("n", "<leader>1", function() harpoon:list():select(1) end)
 vim.keymap.set("n", "<leader>2", function() harpoon:list():select(2) end)
 vim.keymap.set("n", "<leader>3", function() harpoon:list():select(3) end)
 vim.keymap.set("n", "<leader>4", function() harpoon:list():select(4) end)
+vim.keymap.set("n", "<leader>5", function() harpoon:list():select(5) end)
+vim.keymap.set("n", "<leader>6", function() harpoon:list():select(6) end)
+vim.keymap.set("n", "<leader>7", function() harpoon:list():select(7) end)
+vim.keymap.set("n", "<leader>8", function() harpoon:list():select(8) end)
+vim.keymap.set("n", "<leader>9", function() harpoon:list():select(9) end)
+vim.keymap.set("n", "<leader>0", function() harpoon:list():select(0) end)

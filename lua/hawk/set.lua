@@ -8,7 +8,7 @@ vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 
 vim.opt.smartindent = true
-vim.opt.wrap = false
+vim.wo.wrap = false
 
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
@@ -33,6 +33,9 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     group = highlight_group,
     pattern = '*',
 })
+
+vim.o.background = "dark" -- or "light" for light mode
+vim.cmd([[colorscheme gruvbox]])
 
 --[[ require('indent_blankline').setup {
     char = '┊',

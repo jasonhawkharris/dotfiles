@@ -55,7 +55,7 @@ require('gitsigns').setup({
         row = 0,
         col = 1
     },
-    yadm                         = {
+    --[[ yadm                         = {
         enable = false
-    },
+    }, ]]
 })
