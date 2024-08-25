@@ -27,7 +27,7 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 
 -- For Cody
 vim.keymap.set("n", "<leader>cc", cmd 'CodyToggle')
-vim.keymap.set("c", "<leader>ca", cmd 'CodyAsk')
+vim.keymap.set("v", "<leader>ca", cmd 'CodyAsk')
 
 -- For exiting vim
 vim.keymap.set("n", "<C-[>", cmd 'q!')

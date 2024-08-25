@@ -2,26 +2,9 @@
 local lsp = require("lsp-zero")
 
 lsp.preset("recommended")
---[[ lsp.ensure_installed({
-    'tsserver',
-    'gopls',
-    'rust_analyzer',
-}) ]]
-
 lsp.on_attach(function(client, bufnr)
     lsp.default_keymaps({ buffer = bufnr })
 end)
-
--- Fix Undefined global 'vim'
---[[ lsp.configure('lua-language-server', {
-    settings = {
-        Lua = {
-            diagnostics = {
-                globals = { 'vim' }
-            }
-        }
-    }
-}) ]]
 
 require('mason').setup()
 require('mason-lspconfig').setup({
@@ -36,23 +19,6 @@ require('mason-lspconfig').setup({
             local lua_opts = lsp.nvim_lua_ls()
             require('lspconfig').lua_ls.setup(lua_opts)
         end,
-    },
-})
-lsp.configure('rust_analyzer', {
-    -- all the opts to send to nvim-lspconfig
-    -- these override the defaults set by rust-tools.nvim
-    -- see https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md#rust_analyzer
-    server = {
-        settings = {
-            -- to enable rust-analyzer settings visit:
-            -- https://github.com/rust-analyzer/rust-analyzer/blob/master/docs/user/generated_config.adoc
-            ["rust-analyzer"] = {
-                -- enable clippy on save
-                checkOnSave = {
-                    command = "clippy",
-                },
-            },
-        },
     },
 })
 

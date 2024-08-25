@@ -1,10 +1,10 @@
 ---@diagnostic disable: undefined-global
 -- [ ] Themes I Like:
--- [x] "rose-pine"
+-- [ ] "rose-pine"
 -- [ ] "everforest"
 -- [ ] "space-duck"
 -- [ ] "onedark"
--- [ ] "gruvbox"
+-- [x] "gruvbox"
 
 function ColorMyPencils(color)
     color = color or "rose-pine"
@@ -19,4 +19,4 @@ function ColorMyPencils(color)
     vim.api.nvim_set_hl(0, "CursorLine", { bg = "#3C3836" })
 end
 
--- ColorMyPencils()
+ColorMyPencils()
