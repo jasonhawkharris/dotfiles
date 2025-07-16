@@ -84,30 +84,6 @@ return require('lazy').setup({
         end
     },
     {
-        'vonheikemen/lsp-zero.nvim',
-        config = function()
-            require("hawk.plugin.lsp")
-        end,
-        dependencies = {
-            -- LSP Support
-            { 'neovim/nvim-lspconfig' },
-            { 'williamboman/mason.nvim' },
-            { 'williamboman/mason-lspconfig.nvim' },
-
-            -- Autocompletion
-            { 'hrsh7th/nvim-cmp' },
-            { 'hrsh7th/cmp-buffer' },
-            { 'hrsh7th/cmp-path' },
-            { 'saadparwaiz1/cmp_luasnip' },
-            { 'hrsh7th/cmp-nvim-lsp' },
-            { 'hrsh7th/cmp-nvim-lua' },
-
-            -- Snippets
-            { 'L3MON4D3/LuaSnip' },
-            { 'rafamadriz/friendly-snippets' },
-        },
-    },
-    {
         'nvim-treesitter/nvim-treesitter',
         build = ':TSUpdate',
         config = function()
@@ -122,7 +98,14 @@ return require('lazy').setup({
             require("hawk.plugin.harpoon")
         end
     },
-    { "ellisonleao/gruvbox.nvim", priority = 1000, config = true, opts = ... },
+    {
+        "ellisonleao/gruvbox.nvim",
+        priority = 1000,
+        config = true,
+        opts = {
+            transparent_mode = true
+        }
+    },
     {
         'rose-pine/nvim',
         config = function()
@@ -175,5 +158,10 @@ return require('lazy').setup({
     'sunjon/shade.nvim',
     'nvim-treesitter/playground',
     "BurntSushi/ripgrep",
-    "williamboman/mason.nvim"
+    {
+        "williamboman/mason.nvim",
+        config = function()
+            require("mason").setup()
+        end
+    }
 })

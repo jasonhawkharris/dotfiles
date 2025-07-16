@@ -6,7 +6,7 @@ end
 -- Explore when not using nvim-tree.nvim
 --" vim.keymap.set('n', '<leader>pv', vim.cmd.Ex)
 
--- Move shit around all nice
+-- Move code around all nice
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
@@ -20,6 +20,12 @@ vim.keymap.set("n", "<leader>y", [["+y]])
 
 vim.keymap.set("n", "<leader>c", cmd 'set colorcolumn=0')
 vim.keymap.set("n", "<leader>C", cmd 'set colorcolumn=90')
+
+-- for resetting hunks
+vim.keymap.set("v", "<leader>rh", cmd 'Gitsigns reset_hunk')
+vim.keymap.set('n', '<leader>ts', cmd 'Gitsigns toggle_signs')
+vim.keymap.set('n', '<leader>tb', cmd 'Gitsigns toggle_current_line_blame')
+vim.keymap.set("n", "<leader>df", cmd 'Gitsigns diffthis')
 
 -- For vertical MaStErY
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
@@ -35,14 +41,10 @@ vim.keymap.set("n", "<C-[>", cmd 'q!')
 -- For opening file tree
 vim.keymap.set('n', '<leader>pv', cmd 'NvimTreeToggle')
 
--- Gitsigns
-vim.keymap.set('n', '<leader>ts', cmd 'Gitsigns toggle_signs')
-vim.keymap.set('n', '<leader>tb', cmd 'Gitsigns toggle_current_line_blame')
-
 -- Telescope
 vim.keymap.set('n', '<leader>sf', cmd 'Telescope find_files')
 vim.keymap.set('n', '<leader>sh', cmd 'Telescope help_tags')
-vim.keymap.set('n', '<leader>sw', cmd 'Telescope grep_string')
+vim.keymap.set('n', '<leader>gw', cmd 'Telescope grep_string')
 vim.keymap.set('n', '<leader>sg', cmd 'Telescope live_grep')
 vim.keymap.set('n', '<leader>sd', cmd 'Telescope diagnostics')
 vim.keymap.set('n', '<leader>gs', require("telescope").extensions.live_grep_args.live_grep_args, { noremap = true })
