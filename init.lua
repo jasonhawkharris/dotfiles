@@ -5,7 +5,7 @@ require('hawk')
 vim.lsp.config['lua_ls'] = {
   cmd = { 'lua-language-server' },
   filetypes = { 'lua' },
-  root_markers = { '.luarc.json', '.luarc.jsonc' },
+  root_dir = vim.fs.root(0, { '.luarc.json', '.luarc.jsonc', '.git' }),
   settings = {
     Lua = {
       runtime = { version = 'LuaJIT' },
@@ -17,37 +17,44 @@ vim.lsp.config['lua_ls'] = {
 
 vim.lsp.config['tsserver'] = {
   cmd = { 'typescript-language-server', '--stdio' },
-  filetypes = { 'javascript', 'javascriptreact', 'javascript.jsx', 'typescript', 'typescriptreact', 'typescript.tsx' }
+  filetypes = { 'javascript', 'javascriptreact', 'javascript.jsx', 'typescript', 'typescriptreact', 'typescript.tsx' },
+  root_dir = vim.fs.root(0, { 'package.json', 'tsconfig.json', '.git' })
 }
 
 vim.lsp.config['svelte'] = {
   cmd = { 'svelte-language-server', '--stdio' },
-  filetypes = { 'svelte' }
+  filetypes = { 'svelte' },
+  root_dir = vim.fs.root(0, { 'svelte.config.js', 'package.json', '.git' })
 }
 
 vim.lsp.config['html'] = {
   cmd = { 'vscode-html-language-server', '--stdio' },
-  filetypes = { 'html' }
+  filetypes = { 'html' },
+  root_dir = vim.fs.root(0, { 'package.json', '.git' })
 }
 
 vim.lsp.config['cssls'] = {
   cmd = { 'vscode-css-language-server', '--stdio' },
-  filetypes = { 'css', 'scss', 'less' }
+  filetypes = { 'css', 'scss', 'less' },
+  root_dir = vim.fs.root(0, { 'package.json', '.git' })
 }
 
 vim.lsp.config['gopls'] = {
   cmd = { 'gopls' },
-  filetypes = { 'go', 'gomod', 'gowork', 'gotmpl' }
+  filetypes = { 'go', 'gomod', 'gowork', 'gotmpl' },
+  root_dir = vim.fs.root(0, { 'go.mod', 'go.work', '.git' })
 }
 
 vim.lsp.config['jsonls'] = {
   cmd = { 'vscode-json-language-server', '--stdio' },
-  filetypes = { 'json', 'jsonc' }
+  filetypes = { 'json', 'jsonc' },
+  root_dir = vim.fs.root(0, { 'package.json', '.git' })
 }
 
 vim.lsp.config['graphql'] = {
   cmd = { 'graphql-lsp', 'server', '-m', 'stream' },
-  filetypes = { 'graphql', 'typescriptreact', 'javascriptreact' }
+  filetypes = { 'graphql', 'typescriptreact', 'javascriptreact' },
+  root_dir = vim.fs.root(0, { 'package.json', '.graphqlrc', '.git' })
 }
 
 -- Set up LSP keymaps on attach
@@ -63,7 +70,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set('n', 'E', vim.diagnostic.open_float, { buffer = buffer, desc = 'Show diagnostics' })
     vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, { buffer = buffer, desc = 'Rename symbol' })
     vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, { buffer = buffer, desc = 'Code actions' })
-    vim.keymap.set('n', '<leader>f', function() vim.lsp.buf.format { async = true } end, { buffer = buffer, desc = 'Format buffer' })
+    vim.keymap.set('n', '<leader>fo', function() vim.lsp.buf.format { async = true } end, { buffer = buffer, desc = 'Format buffer' })
   end,
 })
 
