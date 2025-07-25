@@ -109,9 +109,33 @@ return require('lazy').setup({
     {
         'rose-pine/nvim',
         config = function()
-            vim.cmd("colorscheme rose-pine")
             require("hawk.plugin.colors")
         end
+    },
+    {
+        "catppuccin/nvim",
+        name = "catppuccin",
+        priority = 1000,
+        opts = {
+            transparent_background = true,
+            flavour = "mocha"
+        }
+    },
+    {
+        "folke/tokyonight.nvim",
+        priority = 1000,
+        opts = {
+            transparent = true,
+            style = "storm"
+        }
+    },
+    {
+        "EdenEast/nightfox.nvim",
+        opts = {
+            options = {
+                transparent = true
+            }
+        }
     },
     {
         'max397574/better-escape.nvim',
